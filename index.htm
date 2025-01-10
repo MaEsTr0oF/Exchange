@@ -4,20 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Конвертер валют</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <h1>Конвертер валют</h1>
-  <div class="converter">
-    <input type="number" id="amount" placeholder="Сумма">
-    <select id="fromCurrency"></select>
-    <span>в</span>
-    <select id="toCurrency"></select>
-    <button id="convert">Конвертировать</button>
-  </div>
-  <div class="result">
-    <p>Результат: <span id="convertedAmount"></span></p>
-  </div>
+  <header class="header">
+    <div class="header_container">
+      <div class="header_content">
+        <div class="header_logo logo"><img src="./img/logo.png" alt=""></div>
+        <div class="header_menu menu">
+          <nav class="menu_navigation navigation">
+            <div class="navigation_curse">Курсы валют</div>
+            <div class="navigation_uslug">Услуги <img src="./img/arrow-down.png" alt=""></div>
+            <div class="navigation_information">Информация <img src="./img/arrow-down.png" alt=""></div>
+          </nav>
+          <nav class="menu_information information">
+            <div class="information_town"><img src="./img/marker.png" alt=""> Москва</div>
+            <div class="information_btn"><button class="glow-on-hover" type="button">Стать партнёром</button></div>
+            <div class="information_phone">+7 900 000 00_00</div>
+            <div class="information_tg"><img src="./img/telegramm.png" alt=""></div>
+          </nav>
+        </div>
+        
+      </div>
+    </div>
+    <!-- Бургер-меню -->
+    <div class="burger">
+      <span></span>
+    </div>
+    <div class="burger_menu">
+      <!-- Сюда будут перемещаться пункты меню -->
+    </div>
+  </header>
+  
+  <main>
+    <section class="exchange">
+      <div class="exchange_container">
+        <div class="exchange_title">
+          <div class="exchange_title_main">Мгновенный обмен валют в Тайланде</div>
+          <div class="exchange_title_sub">Работаем 24/7</div>
+        </div>
+        <div class="exchange_content">
+          <div class="content_block">
+            <div class="exchange_block">
+              <div class="block_image"><img src="./img/block1.png" alt=""></div>
+              <div class="block_subtext">Более 1 000 отзывов на сторонних ресурсах</div>
+            </div>
+            <div class="exchange_block">
+              <div class="block_image"><img src="./img/block2.png" alt=""></div>
+              <div class="block_subtext">Лицензия ЦБ Королевства Таиланд № МС 225660108
+              </div>
+            </div>
+            <div class="exchange_block">
+              <div class="block_image"><img src="./img/block3.png" alt=""></div>
+              <div class="block_subtext">Получите наличные баты прямо в аэропорту</div>
+            </div>
+            <div class="exchange_block">
+              <div class="block_image"><img src="./img/block4.png" alt=""></div>
+              <div class="block_subtext">Обмен валют онлайн за 2 клика и 60 секунд</div>
+            </div>
+          </div>
+          <div class="exchange_operation">
+            <div class="take">
+              <div class="operation_take_title">
+                <div class="take_title">
+                  Вы отдаете:
+                </div>
+                <div class="take_course">
+                  <span id="startmoneytake"></span>=<span id="endmoneytake"></span>
+                </div>
+              </div>
+              <div class="take_input">
+                <input type="number" id="amount" placeholder="Сумма">
+                <img src="" id="flagtake" alt="">
+                <select id="fromCurrency"></select>
+              </div>
+            </div>
+            <div class="get">
+              <div class="operation_get_title">
+                <div class="get_title">
+                  Вы получаете:
+                </div>
+                <div class="get_course">
+                  <span id="startmoneyget"></span>=<span id="endmoneyget"></span>
+                </div>
+              </div>
+              <div class="get_answer">
+                <div class="answer_conwert"><span id="convertedAmount"></span></div>
+                <img src="" id="flagget" alt="">
+                <select id="toCurrency"></select>
+              </div>
+              <button id="convert">Конвертировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <h1>Конвертер валют</h1>
+    <div class="converter">
+      <input type="number" id="amount" placeholder="Сумма">
+      <select id="fromCurrency"></select>
+      <span>в</span>
+      <select id="toCurrency"></select>
+      <button id="convert">Конвертировать</button>
+    </div>
+    <div class="result">
+      <p>Результат: <span id="convertedAmount"></span></p>
+    </div> -->
+  </main>
+  <footer></footer>
   <script src="scripts.js"></script>
 </body>
 </html>

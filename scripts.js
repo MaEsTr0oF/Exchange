@@ -1,12 +1,54 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = 'a3da5983d9a3a5ff55ab2eba7e917147';
+  // Конвертация валют
+  const apiKey = '0a1ac26c623db9d5cb6cda66aee8024b';
   const currencyAPI = `https://api.exchangeratesapi.io/v1/latest?access_key=${apiKey}`;
   const amountInput = document.getElementById('amount');
   const fromCurrencySelect = document.getElementById('fromCurrency');
   const toCurrencySelect = document.getElementById('toCurrency');
   const convertButton = document.getElementById('convert');
   const convertedAmountSpan = document.getElementById('convertedAmount');
-  const allowedCurrencies = ['RUB', 'USD', 'EUR', 'THB', 'TRY', 'KZT'];
+  const allowedCurrencies = ['RUB', 'USD', 'EUR', 'THB'];
+  const flagTake = document.getElementById('flagtake');
+  const flagGet = document.getElementById('flagget');
+
+  const startMoneyTake = document.getElementById('startmoneytake');
+  const endMoneyTake = document.getElementById('endmoneytake');
+  const startMoneyGet = document.getElementById('startmoneyget');
+  const endMoneyGet = document.getElementById('endmoneyget');
+
+  // Функция для обновления пути до флага
+  function updateFlag(selectElement, imgElement) {
+    const selectedCurrency = selectElement.value;
+    if (selectedCurrency) {
+      imgElement.src = `./img/flags/${selectedCurrency}.png`;
+    } else {
+      imgElement.src = ''; // Если валюта не выбрана
+    }
+  }
+
+  // Функция для обновления курсов валют в спанах
+  function updateExchangeRateSpans(data, fromCurrency, toCurrency) {
+    let rateFromTo, rateToFrom;
+
+    if (fromCurrency === "EUR") {
+      rateFromTo = data.rates[toCurrency]; // Курс EUR -> toCurrency
+      rateToFrom = 1 / data.rates[toCurrency]; // Курс toCurrency -> EUR
+    } else if (toCurrency === "EUR") {
+      rateFromTo = 1 / data.rates[fromCurrency]; // Курс fromCurrency -> EUR
+      rateToFrom = data.rates[fromCurrency]; // Курс EUR -> fromCurrency
+    } else {
+      const rateToEUR = 1 / data.rates[fromCurrency]; // Курс fromCurrency -> EUR
+      const rateFromEUR = data.rates[toCurrency]; // Курс EUR -> toCurrency
+      rateFromTo = rateToEUR * rateFromEUR;
+      rateToFrom = 1 / rateFromTo;
+    }
+
+    // Обновляем содержимое спанов
+    startMoneyTake.textContent = `1 ${fromCurrency}`;
+    endMoneyTake.textContent = `${rateFromTo.toFixed(4)} ${toCurrency}`;
+    startMoneyGet.textContent = `1 ${toCurrency}`;
+    endMoneyGet.textContent = `${rateToFrom.toFixed(4)} ${fromCurrency}`;
+  }
 
   // Получение данных через API
   async function fetchCurrencies() {
@@ -31,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
             toCurrencySelect.appendChild(optionTo);
           }
         });
+
+        // Устанавливаем начальные значения флагов
+        updateFlag(fromCurrencySelect, flagTake);
+        updateFlag(toCurrencySelect, flagGet);
       } else {
         console.error('Ошибка при получении данных: ', data.error);
         convertedAmountSpan.textContent = "Ошибка загрузки валют.";
@@ -66,22 +112,21 @@ document.addEventListener("DOMContentLoaded", function () {
         let convertedAmount;
 
         if (fromCurrency === "EUR") {
-          // Прямая конвертация из EUR
           const conversionRate = data.rates[toCurrency];
           convertedAmount = amount * conversionRate;
         } else if (toCurrency === "EUR") {
-          // Прямая конвертация в EUR
           const conversionRate = 1 / data.rates[fromCurrency];
           convertedAmount = amount * conversionRate;
         } else {
-          // Двойная конвертация через EUR
           const rateToEUR = 1 / data.rates[fromCurrency];
           const rateFromEUR = data.rates[toCurrency];
           convertedAmount = amount * rateToEUR * rateFromEUR;
-          convertedAmount *= 1.03;
         }
 
         convertedAmountSpan.textContent = convertedAmount.toFixed(2);
+
+        // Обновляем спаны с курсами
+        updateExchangeRateSpans(data, fromCurrency, toCurrency);
       } else {
         console.error('Ошибка при конвертации валют: ', data.error);
         convertedAmountSpan.textContent = "Ошибка при конвертации.";
@@ -95,6 +140,66 @@ document.addEventListener("DOMContentLoaded", function () {
   // Событие нажатия кнопки конвертации
   convertButton.addEventListener('click', convertCurrency);
 
+  // Обновление флагов при изменении выбранной валюты
+  fromCurrencySelect.addEventListener('change', () => updateFlag(fromCurrencySelect, flagTake));
+  toCurrencySelect.addEventListener('change', () => updateFlag(toCurrencySelect, flagGet));
+
   // Инициализация данных
   fetchCurrencies();
+
+  // Бургер-меню с затемнением
+  const burger = document.querySelector('.burger');
+  const burgerMenu = document.querySelector('.burger_menu');
+  const navigation = document.querySelector('.menu_navigation');
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  document.body.appendChild(overlay);
+
+  const items = {
+    1300: document.querySelector('.navigation_curse'),
+    1100: document.querySelector('.navigation_uslug'),
+    1000: document.querySelector('.navigation_information'),
+    800: document.querySelector('.information_phone'),
+    600: document.querySelector('.information_btn'),
+  };
+
+  // Открытие/закрытие меню и управление затемнением
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    burgerMenu.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  // Закрытие меню при клике на затемнение
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+      burger.classList.remove('open');
+      burgerMenu.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+  });
+
+  // Перемещение пунктов меню в бургер-меню при изменении ширины экрана
+  const moveToBurger = () => {
+    const width = window.innerWidth;
+
+    for (const breakpoint in items) {
+      const item = items[breakpoint];
+      if (width <= breakpoint) {
+        if (item && !burgerMenu.contains(item)) {
+          burgerMenu.appendChild(item);
+        }
+      } else {
+        if (item && !navigation.contains(item)) {
+          navigation.appendChild(item);
+        }
+      }
+    }
+  };
+
+  // Обработчик изменения размера окна
+  window.addEventListener('resize', moveToBurger);
+
+  // Инициализация перемещения пунктов меню
+  moveToBurger();
 });
