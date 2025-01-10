@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конвертер валют</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Конвертер валют</h1>
+  <div class="converter">
+    <input type="number" id="amount" placeholder="Сумма">
+    <select id="fromCurrency"></select>
+    <span>в</span>
+    <select id="toCurrency"></select>
+    <button id="convert">Конвертировать</button>
+  </div>
+  <div class="result">
+    <p>Результат: <span id="convertedAmount"></span></p>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
