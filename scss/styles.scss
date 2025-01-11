@@ -152,7 +152,7 @@ select, input, button {
 }
 
 /* Медиа-запросы для видимости бургера */
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
   .burger {
     display: block;
   }
@@ -172,7 +172,7 @@ select, input, button {
   &_content {
     display: flex;
     flex-direction: row;
-    gap: calc(10px + (150 - 10) * ((100vw - 1300px) / (1900 - 1300)));
+    gap: calc(10px + (150 - 10) * ((100vw - 1300px) / (1700 - 1300)));
 
   }
 
@@ -205,12 +205,12 @@ select, input, button {
   flex:1;
   display: flex;
   align-items: center;
-  gap: calc(20px + (150 - 20) * ((100vw - 1300px) / (1900 - 1300)));
+  gap: calc(20px + (150 - 20) * ((100vw - 1300px) / (1700 - 1300)));
   font-size: 22px;
   font-weight: bold;
   &_navigation {
     display: flex;
-    gap: calc(15px + (50 - 15) * ((100vw - 1300px) / (1900 - 1300)));
+    gap: calc(15px + (50 - 15) * ((100vw - 1300px) / (1700 - 1300)));
   }
 
   &_information {
@@ -345,29 +345,30 @@ select, input, button {
 
   &_title {
     display: flex;
-    font-size: 48px;
+    font-size: calc(20px + (48 - 20) * ((100vw - 480px) / (1900 - 480)));
     align-items: center;
+    justify-content: space-between;
     //justify-content: center;
     &_main{
-      //flex:1;
+      
     }
     &_sub{
-      font-size: 30px;
+      font-size: calc(15px + (30 - 15) * ((100vw - 480px) / (1900 - 480)));
       opacity: 60%;
-      flex:1;
+      
     }
   }
 
   &_content {
     display: flex;
-    
+    gap:8%;
   }
 
   &_block {
     display: flex;
     align-items: center;
     gap: 30px;
-    font-size: 28px;
+    font-size: calc(12px + (28 - 12) * ((100vw - 480px) / (1900 - 480)));
     padding: 20px;
   }
 }
@@ -382,7 +383,32 @@ select, input, button {
   }
 
   &_subtext {
+    text-align: start;
   }
+}
+.take_block{
+  position: absolute; /* Абсолютное позиционирование */
+  right: 10px; /* Отступ от правого края input */
+  top: 50%; /* Центрируем по высоте */
+  transform: translateY(-50%); /* Корректируем вертикальное смещение */
+  display: flex;
+  align-items: center; /* Выравниваем содержимое внутри блока */
+}
+.take_block img{
+  width: 40px; /* Устанавливаем размер изображения */
+  height: auto;
+  margin-right: 5px; /* Отступ между изображением и select */
+}
+.take_block select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 14px;
+}
+.answer_block{
+  display: flex;
+  position:absolute;
+  right:10%;
 }
 .exchange {
 
@@ -392,7 +418,7 @@ select, input, button {
     flex-direction: column;
     flex:1;
     text-align: start;
-    font-size: 35px;
+    
   }
 }
 .take {
@@ -406,28 +432,57 @@ select, input, button {
 
   &_input {
     display: flex;
-    flex-wrap: nowrap;
+  align-items: center; /* Выравниваем элементы по центру */
+  position: relative; /* Родитель для абсолютного позиционирования */
     
     
   }
 }
 #amount{
-  padding: 10px 15vw;
+  padding: 20px;
   text-align: center;
+  width: 100%; /* Расширяем input */
+  box-sizing: border-box; /* Учитываем padding в ширине */
+  background-color: #DFFFDF;
+  border-radius: 10px;
 }
 .operation {
 
   &_take {
     &_title {
       display: flex;
+      font-size: 25px;
+      padding: 10px 0;
+      justify-content: space-between;
     }
   }
 
   &_get {
     &_title {
       display: flex;
+      font-size: 25px;
+      padding: 10px 0;
+      justify-content: space-between;
     }
   }
+}
+.exchange_link{
+  text-align: center;
+  margin:20px 0;
+}
+.exchange_content a{
+  
+  margin: 0 auto;
+}
+#telegramIcon {
+  width: 290px; /* Ширина и высота изображения */
+  height: 54px;
+  cursor: pointer; /* Указывает, что это кликабельный элемент */
+  transition: transform 0.3s; /* Анимация при наведении */
+}
+
+#telegramIcon:hover {
+  transform: scale(1.1); /* Увеличение изображения при наведении */
 }
 .get {
 
@@ -435,6 +490,7 @@ select, input, button {
   }
 
   &_course {
+    
   }
 
   &_answer {
@@ -444,10 +500,52 @@ select, input, button {
 }
 .answer_conwert{
   font-size: 14px;
-  background-color: white;
   border: #000 solid 1px;
-  width:38.5vw;
+  width:39vw;
   height: 20px;
   text-align: center;
-  padding:10px 0;
+  padding:20px 0;
+  border-radius: 10px;
+  background-color: #DFFFDF;
+}
+.get_answer {
+  position: relative; /* Родитель для абсолютного позиционирования */
+  display: flex;
+  align-items: center;
+}
+
+
+.answer_block {
+  position: absolute; /* Абсолютное позиционирование относительно .get_answer */
+  right: 10px; /* Расположено справа от .answer_conwert */
+  top: 50%; /* Центрирование по вертикали */
+  transform: translateY(-50%); /* Выравниваем по середине */
+  display: flex;
+  align-items: center;
+}
+
+.answer_block img {
+  width: 40px; /* Размер изображения */
+  height: auto;
+  margin-right: 5px; /* Отступ между изображением и select */
+}
+
+.answer_block select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 14px;
+}
+@media (max-width: 1200px) {
+  
+  .exchange_content {
+    flex-direction: column;
+  }
+  .answer_conwert{
+    width: 100vw;
+  }
+  .exchange{
+    margin:0;
+    padding: 0;
+  }
 }

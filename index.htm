@@ -21,7 +21,7 @@
             <div class="information_town"><img src="./img/marker.png" alt=""> Москва</div>
             <div class="information_btn"><button class="glow-on-hover" type="button">Стать партнёром</button></div>
             <div class="information_phone">+7 900 000 00_00</div>
-            <div class="information_tg"><img src="./img/telegramm.png" alt=""></div>
+            <div class="information_tg"><img src="./img/telegrammIcon.png" alt=""></div>
           </nav>
         </div>
         
@@ -75,8 +75,10 @@
               </div>
               <div class="take_input">
                 <input type="number" id="amount" placeholder="Сумма">
-                <img src="" id="flagtake" alt="">
-                <select id="fromCurrency"></select>
+                <div class="take_block">
+                  <img src="" id="flagtake" alt="">
+                  <select id="fromCurrency"></select>
+                </div>
               </div>
             </div>
             <div class="get">
@@ -90,26 +92,22 @@
               </div>
               <div class="get_answer">
                 <div class="answer_conwert"><span id="convertedAmount"></span></div>
-                <img src="" id="flagget" alt="">
-                <select id="toCurrency"></select>
+                  <div class="answer_block">
+                    <img src="" id="flagget" alt="">
+                    <select id="toCurrency"></select>
+                  </div>
               </div>
-              <button id="convert">Конвертировать</button>
+              <!-- <button id="convert">Конвертировать</button> -->
             </div>
+            <div class="exchange_link">
+            <a href="https://t.me/EVAexchange_bot_1" target="_blank">
+              <img src="./img/telegramm.png" alt="Telegram Bot" id="telegramIcon">
+            </a>
+          </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- <h1>Конвертер валют</h1>
-    <div class="converter">
-      <input type="number" id="amount" placeholder="Сумма">
-      <select id="fromCurrency"></select>
-      <span>в</span>
-      <select id="toCurrency"></select>
-      <button id="convert">Конвертировать</button>
-    </div>
-    <div class="result">
-      <p>Результат: <span id="convertedAmount"></span></p>
-    </div> -->
   </main>
   <footer></footer>
   <script src="scripts.js"></script>
