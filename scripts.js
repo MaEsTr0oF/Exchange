@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = '0a1ac26c623db9d5cb6cda66aee8024b';
+  const apiKey = '41fcc38f282000fed686b801740f35f1';
   const currencyAPI = `https://api.exchangeratesapi.io/v1/latest?access_key=${apiKey}`;
   const amountInput = document.getElementById('amount');
   const fromCurrencySelect = document.getElementById('fromCurrency');
