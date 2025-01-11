@@ -172,7 +172,7 @@ select, input, button {
 .header_content {
   display: flex;
   flex-direction: row;
-  gap: calc(10px + 140 * (100vw - 1300px) / 400);
+  gap: calc(10px + 120 * (100vw - 1400px) / 500);
 }
 .header_logo img {
   object-fit: cover;
@@ -195,19 +195,19 @@ select, input, button {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: calc(20px + 130 * (100vw - 1300px) / 400);
+  gap: calc(20px + 100 * (100vw - 1400px) / 500);
   font-size: 22px;
   font-weight: bold;
 }
 .menu_navigation {
   display: flex;
-  gap: calc(15px + 35 * (100vw - 1300px) / 400);
+  gap: calc(15px + 30 * (100vw - 1400px) / 500);
 }
 .menu_information {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: calc(15px + 35 * (100vw - 1300px) / 600);
+  gap: calc(15px + 30 * (100vw - 1400px) / 500);
   justify-content: center;
 }
 

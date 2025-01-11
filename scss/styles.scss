@@ -172,7 +172,7 @@ select, input, button {
   &_content {
     display: flex;
     flex-direction: row;
-    gap: calc(10px + (150 - 10) * ((100vw - 1300px) / (1700 - 1300)));
+    gap: calc(10px + (130 - 10) * ((100vw - 1400px) / (1900 - 1400)));
 
   }
 
@@ -205,19 +205,19 @@ select, input, button {
   flex:1;
   display: flex;
   align-items: center;
-  gap: calc(20px + (150 - 20) * ((100vw - 1300px) / (1700 - 1300)));
+  gap: calc(20px + (120 - 20) * ((100vw - 1400px) / (1900 - 1400)));
   font-size: 22px;
   font-weight: bold;
   &_navigation {
     display: flex;
-    gap: calc(15px + (50 - 15) * ((100vw - 1300px) / (1700 - 1300)));
+    gap: calc(15px + (45 - 15) * ((100vw - 1400px) / (1900 - 1400)));
   }
 
   &_information {
     flex:1;
     display: flex;
     align-items: center;
-    gap: calc(15px + (50 - 15) * ((100vw - 1300px) / (1900 - 1300)));
+    gap: calc(15px + (45 - 15) * ((100vw - 1400px) / (1900 - 1400)));
     justify-content: center;
   }
 }
