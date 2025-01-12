@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1400: document.querySelector('.navigation_curse'),
     1100: document.querySelector('.navigation_uslug'),
     1000: document.querySelector('.navigation_information'),
+    950: document.querySelector('.information_phone'),
     900: document.querySelector('.information_btn'),
-    800: document.querySelector('.information_phone'),
   };
 
   burger.addEventListener('click', () => {
