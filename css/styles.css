@@ -190,6 +190,9 @@ select, input, button {
   .header_container {
     padding: 0;
   }
+  .header {
+    gap: 0px;
+  }
 }
 .menu {
   flex: 1;
@@ -482,5 +485,22 @@ select, input, button {
   .exchange {
     margin: 0;
     padding: 0;
+  }
+}
+@media (max-width: 700px) {
+  .take_block img {
+    width: 30px; /* Устанавливаем размер изображения */
+  }
+  .take_block select {
+    font-size: 12px;
+  }
+  .exchange_container {
+    padding: 40px 0;
+  }
+  .answer_block img {
+    width: 30px;
+  }
+  .answer_block select {
+    font-size: 12px;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -198,6 +198,9 @@ select, input, button {
   .header_container {
     padding: 0;
   }
+  .header{
+    gap:0px;
+  }
 }
 .logo {
 }
@@ -399,12 +402,14 @@ select, input, button {
   height: auto;
   margin-right: 5px; /* Отступ между изображением и select */
 }
+
 .take_block select {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px;
   font-size: 14px;
 }
+
 .answer_block{
   display: flex;
   position:absolute;
@@ -547,5 +552,23 @@ select, input, button {
   .exchange{
     margin:0;
     padding: 0;
+  }
+}
+@media (max-width: 700px) {
+  
+  .take_block img{
+    width: 30px; /* Устанавливаем размер изображения */ 
+  }
+  .take_block select {
+    font-size: 12px;
+  }
+  .exchange_container{
+    padding: 40px 0;
+  }
+  .answer_block img{
+    width: 30px;
+  }
+  .answer_block select{
+    font-size: 12px;
   }
 }
